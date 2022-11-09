@@ -2,6 +2,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import ohImg from './images/optima-health-logo-vector.png'
 
 import React from 'react'
 import { Close } from '@mui/icons-material';
@@ -12,7 +13,7 @@ function Header({title}) {
         <AppBar position="static" color='inherit' elevation={0}>
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    {title}
+                   {title === 'Optima Health' ? <img alt={title} src={ohImg} style={{ height: '40px',width: '130px',padding: '5px'}} /> : title }
                 </Typography>
                 <IconButton
                     size="large"

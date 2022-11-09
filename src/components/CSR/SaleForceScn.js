@@ -1,11 +1,14 @@
 import { Box, Stack, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, {  useState } from 'react'
 import styled from '@emotion/styled';
 import { useForm } from "react-hook-form";
 import ConfirmationScn from './ConfirmationScn';
-import { send } from 'emailjs-com';
+// import { send } from 'emailjs-com';
 import CircularProgress from '@mui/material/CircularProgress';
-import Main from './Layout/Main';
+import Main from '../Layout/Main';
+import { useDispatch } from 'react-redux';
+import {  saveOHUser } from '../../Actions/OHUser';
+import {  useNavigate } from 'react-router-dom';
 
 const CustomTextFields = styled(TextField)`
 fieldset {
@@ -17,7 +20,8 @@ fieldset {
 function SaleForceScn() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    const dispatch = useDispatch();
+    const history = useNavigate()
 
     const [status, setStatus] = useState({
         loading: false,
@@ -25,6 +29,7 @@ function SaleForceScn() {
         success: false
     })
 
+        
     const onSubmit = (e, data) => {
         setStatus({
             ...status,
@@ -32,23 +37,32 @@ function SaleForceScn() {
             error: false,
             success: false
 
-        })
+        });
+
+        const OHUser = {
+            firstName: e.firstName,
+            lastName: e.lastName,
+            mobileNumber: e.mobileNumber,
+            emailAddress: e.emailAddress,
+            memberId: e.mobileNumber
+        }
+
         data.preventDefault();
 
-        send(
-            'service_zv9pnqv',
-            'template_7thavpy',
-            {
-                from_name: "Proxy Authorization",
-                to_name: `${e.firstName} ${e.lastName}`,
-                message: "Use the below link to complete Proxy Authorization",
-                reply_to: `${e.emailAddress}`,
-                link: 'http://localhost:3000/disclosure',
-                link_name: "Proxy Form"
-            },
-            'sul0Mjq5ckabe9CaT'
-        )
-            .then((response) => {
+        // send(
+        //     'service_zv9pnqv',
+        //     'template_7thavpy',
+        //     {
+        //         from_name: "Proxy Authorization",
+        //         to_name: `${e.firstName} ${e.lastName}`,
+        //         message: "Use the below link to complete Proxy Authorization",
+        //         reply_to: `${e.emailAddress}`,
+        //         link: 'http://localhost:3000/disclosure',
+        //         link_name: "Proxy Form"
+        //     },
+        //     'sul0Mjq5ckabe9CaT'
+        // )
+        // myPromise.then((response) => {
                 setStatus({
                     ...status,
                     loading: false,
@@ -56,18 +70,21 @@ function SaleForceScn() {
                     success: true
 
                 })
-                console.log(response.text)
-            })
-            .catch((err) => {
-                console.log('FAILED...', err);
-                setStatus({
-                    ...status,
-                    loading: false,
-                    error: true,
-                    success: false
+                dispatch(saveOHUser(OHUser))
+                 // eslint-disable-next-line no-restricted-globals
+                 history('/memberlogin')
 
-                })
-            });
+            // })
+            // .catch((err) => {
+            //     console.log('FAILED...', err);
+            //     setStatus({
+            //         ...status,
+            //         loading: false,
+            //         error: true,
+            //         success: false
+
+            //     })
+            // });
 
     }
 

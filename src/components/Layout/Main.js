@@ -10,7 +10,7 @@ function Main({ children, title }) {
         <>
             <CssBaseline />
             <Header title={title} />
-            <Divider variant="middle" />
+            <Divider variant="middle" sx={{ borderWidth: '1px'}} />
             <Container>
                 {children}
             </Container>

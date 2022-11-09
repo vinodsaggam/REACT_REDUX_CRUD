@@ -17,13 +17,13 @@ function Home() {
     return (
         <Stack spacing={2} direction="row" sx={{ justifyContent: "center", alignItems: 'center', height: '100vh', background: 'deepskyblue' }}>
 
-            <Link to="/" style={mystyle}>Home</Link>
-
             <Link to="/auth_form" style={mystyle}>Authorization Form</Link>
 
-            <Link to="/crud" style={mystyle}>CRUD Form</Link>
-
             <Link to="/disclosure" style={mystyle}>Disclosure Form</Link>
+
+            <Link to="/memberlogin" style={mystyle}>Member Login</Link>
+
+            <Link to="/crud" style={mystyle}>CRUD Form</Link>
 
         </Stack>
     )
