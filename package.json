@@ -1,6 +1,7 @@
 {
   "name": "react-redux-crud-example",
   "version": "0.1.0",
+  "homepage": "https://vinodsaggam.github.io/REACT_REDUX_CRUD",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.4",
