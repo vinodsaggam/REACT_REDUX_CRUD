@@ -13,7 +13,7 @@ import DRSrn from './components/CSR/DRSrn';
 function App() {
   return (
     <div>
-      <Router>
+      <Router basename="/REACT_REDUX_CRUD>
       <Routes>
               <Route exact path="/" element={<Home />}></Route>
               <Route exact path='/auth_form' element={< SaleForceScn />}></Route>
