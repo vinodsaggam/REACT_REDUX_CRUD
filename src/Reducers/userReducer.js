@@ -54,7 +54,7 @@ const defaultState = {
       case 'UPDATE_USER': {
 
          let updatedUser = state.users.map((user) => {
-          if (user.id == action.payload.id) {
+          if (user.id === action.payload.id) {
             user.name = action.payload.name;
             user.username = action.payload.username;
             user.email = action.payload.email;

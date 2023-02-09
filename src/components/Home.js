@@ -14,8 +14,11 @@ function Home() {
         width: '100px',
         height: '50px'
     }
+
     return (
-        <Stack spacing={2} direction="row" sx={{ justifyContent: "center", alignItems: 'center', height: '100vh', background: 'deepskyblue' }}>
+        
+
+        <Stack spacing={2} direction="column" sx={{ justifyContent: "center", alignItems: 'center', height: '100vh', background: 'deepskyblue' }}>
 
             <Link to="/auth_form" style={mystyle}>Authorization Form</Link>
 

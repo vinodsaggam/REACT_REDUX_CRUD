@@ -22,7 +22,7 @@ function Header({title}) {
                     aria-label="menu"
                     sx={{ mr: 1 }}
                     onClick={() => {
-                        window.location.href = '/'
+                        window.location.href = '/REACT_REDUX_CRUD'
                       }}
                 >
                     <Close />
